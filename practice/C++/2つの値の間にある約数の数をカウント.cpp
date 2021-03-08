@@ -1,0 +1,90 @@
+/*
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    cout << N << endl;
+}
+
+
+int main() {
+    string s;
+    getline(cin,s);
+    cout << s << "\n";
+    cout << s[0];
+}
+
+int main(){
+    cout << "Hello World" << endl;
+    return 0;
+}
+
+if (条件){
+　　処理
+} else if (条件) {
+　　処理
+} else {
+　　処理
+}
+
+for (int i = 0; i < 3; i++) {
+	cout <<  i << "\n";
+	}
+return 0;
+}
+
+while True:
+if (num == 0) break;
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main() {
+
+    cin >> a >> b;
+
+    cout <<  << endl;
+
+    return 0;
+}
+*/
+
+/* sample input
+5 14 80
+*/
+
+/* 制約・条件
+
+*/
+
+/*答え
+#include <bits/stdc++.h> 
+int main()
+{
+	int a,b,c,flag=0;
+	scanf("%d%d%d",&a,&b,&c);
+	for(;a<=b;a++)
+	{
+		if(c%a==0)flag++;
+	}
+	printf("%d\n",flag);
+	return 0;
+}
+*/
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main() {
+    int x, y, z, num;
+    cin >> x >> y >> z;
+    for (; x<= y; x++) {
+        if (z % x == 0) num++;
+	}
+    cout << num << endl;
+    return 0;
+}
