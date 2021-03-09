@@ -56,7 +56,7 @@ int main()
 using namespace std;
 
 int main() {
-
+    int a, b;
     cin >> a >> b;
     cout <<  << endl;
     return 0;
@@ -78,19 +78,18 @@ int main() {
 using namespace std;
 
 int main() {
-    int a, b;
-    while(true){
-    cin >> a >> b;
-    if(a == 0 && b == 0) break;
-
+    int a;
+    cin >> a;
     int i, x;
-    for(i=0;i<a;i++){
-        for(x=0;x<b;x++){
-            cout << "#";
+    for (i=3;i<=a;i++){
+        if (i % 3 == 0){
+            cout << " " << i;
+        } else if (i % 10 == 3) {
+            cout << " " << i;
+        } else if (i > 30 && i < 40) {
+            cout << " " << i;
         }
-        cout << endl;
     }
     cout << endl;
-    }
     return 0;
 }
