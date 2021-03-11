@@ -61,14 +61,15 @@ int main() {
     cout <<  << endl;
     return 0;
 }
-*/
 
 /* sample input
-3 4
-5 6
-2 2
-0 0
+
 */
+
+/*　参考回答
+
+*/
+
 
 /* 制約・条件
 
@@ -78,18 +79,16 @@ int main() {
 using namespace std;
 
 int main() {
-    int a;
-    cin >> a;
-    int i, x;
-    for (i=3;i<=a;i++){
-        if (i % 3 == 0){
-            cout << " " << i;
-        } else if (i % 10 == 3) {
-            cout << " " << i;
-        } else if (i > 30 && i < 40) {
-            cout << " " << i;
-        }
-    }
-    cout << endl;
+    int a, b;
+    cin >> a >> b;
+    cout << a << endl;
     return 0;
 }
+
+/* sample input
+
+*/
+
+/*　参考回答
+
+*/
