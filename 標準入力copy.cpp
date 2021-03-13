@@ -52,25 +52,24 @@ int main()
 	return 0;
 }
 
-#include <iostream> 
+#include <iostream>
 #include <bits/stdc++.h> 
 using namespace std;
 
 int main() {
-    int a, b;
+
     cin >> a >> b;
     cout <<  << endl;
     return 0;
 }
+*/
 
 /* sample input
-
+3 4
+5 6
+2 2
+0 0
 */
-
-/*　参考回答
-
-*/
-
 
 /* 制約・条件
 
@@ -81,15 +80,18 @@ using namespace std;
 
 int main() {
     int a, b;
+    while(true){
     cin >> a >> b;
-    cout << a << endl;
+    if(a == 0 && b == 0) break;
+
+    int i, x;
+    for(i=0;i<a;i++){
+        for(x=0;x<b;x++){
+            cout << "#";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    }
     return 0;
 }
-
-/* sample input
-
-*/
-
-/*　参考回答
-
-*/
