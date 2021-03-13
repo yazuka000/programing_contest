@@ -2,29 +2,22 @@
 using namespace std;
 
 int main() {
-    int A, B, W, kg, ma, mi, to;
+    int A, B, W;
     cin >> A >> B >> W;
 
-    kg = W * 1000;
+    int m=1e9, M=0;
 
-    
-    int i, x;
-    for(i=0;i<=1000;i++){
-        for(x=0;x<=1000;x++){
-            if(A * i + B * x == kg){
-                to = i + x;
-            }
-            if(ma < to){
-                ma = to;
-            }
-            if(mi > to){
-                mi = to;
-            }
-            
+    for(int n=1;n<=1000000;n++){
+        if(A*n<=1000*W && 1000*W<=B*n){
+            m=min(m,n);
+            M=max(M,n);
         }
     }
-
-    cout << mi << " " << ma << endl;
+    if(M=0){
+        cout << "UNSATISFIABLE";
+    }else{
+        cout << m << ' ' << M << endl;
+    }
     return 0;
 }
 

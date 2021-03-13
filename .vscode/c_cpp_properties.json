@@ -4,7 +4,9 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/include/"
+                "/usr/local/include/",
+                "/usr/local/Cellar/gcc/10.2.0_4/include/c++/10.2.0",
+                "/usr/local/Cellar/gcc/10.2.0_4/include/c++/10.2.0/x86_64-apple-darwin20"
             ],
             "defines": [],
             "macFrameworkPath": [],
