@@ -11,7 +11,6 @@
 // sample input: 5 4 2 2 1
 
 
-
 #include <bits/stdc++.h> 
 using namespace std;
 
@@ -19,9 +18,7 @@ int main(){
     int W, H, x, y, r;
     cin >> W >> H >> x >> y >> r;
 
-    if (x - r < 0 || y - r < 0) {
-        cout << "No" << endl;
-    } else if (x + r > W || y + r > H) {
+    if ((x - r < 0 || y - r < 0) || (x + r > W || y + r > H)){
         cout << "No" << endl;
     } else {
         cout << "Yes" << endl;
@@ -29,3 +26,20 @@ int main(){
 
     return 0;
 }
+
+/* 参考回答
+
+#include <stdio.h>
+
+using namespace std;
+
+int main(){
+	int W,H,x,y,r;
+	scanf("%d %d %d %d %d",&W,&H,&x,&y,&r);
+	if((x >= r && x <= W-r) && (y >= r && y <= H-r))
+		printf("Yes\n");
+	else{
+		printf("No\n");
+	}
+}
+*/
