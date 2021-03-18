@@ -2,7 +2,7 @@
 computer
 Nurtures computer scientists and highly skilled computer engineers
 who will create and exploit knowledge for the new era
-Provides an outstanding computer environment
+Provides an outstanding Computer environment
 END_OF_TEXT
 */
 

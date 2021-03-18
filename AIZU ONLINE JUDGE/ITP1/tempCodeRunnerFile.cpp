@@ -1,4 +1,4 @@
-123
-55
-1000
-0
+3
+cat dog
+fish fish
+lion tiger
