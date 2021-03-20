@@ -13,9 +13,12 @@
 using namespace std;
 
 int main() {
+	// 初期値定義
     int n, m, tmp;
     cin >> n >> m;
 	int** A = new int*[n];
+
+	// 処理定義
 	for(int i=0 ; i<n; i++){
 		A[i] = new int[m];
 	}
@@ -39,18 +42,13 @@ int main() {
 		for(int j = 0; j < m; j++){
 			sum += A[i][j] * b[j];
 		}
+
+		// 出力定義
 		cout << sum << endl;
 	}
 
     return 0;
 }
-
-
-
-
-
-
-
 
 
 /*

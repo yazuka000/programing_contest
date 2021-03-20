@@ -15,9 +15,11 @@
 using namespace std;
 
 int main(){
+    // 初期値定義
     int W, H, x, y, r;
     cin >> W >> H >> x >> y >> r;
 
+    // 処理・出力定義
     if ((x - r < 0 || y - r < 0) || (x + r > W || y + r > H)){
         cout << "No" << endl;
     } else {

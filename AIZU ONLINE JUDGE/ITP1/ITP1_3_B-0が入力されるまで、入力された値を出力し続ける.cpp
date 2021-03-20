@@ -16,12 +16,18 @@
 using namespace std;
 
 int main() {
-    int i = 1;
+    // 初期値定義
+    int i = 0;
     int num;
+
+    // 処理定義
     while (true) {
-    cin >> num;
-    if (num == 0) break;
-    cout << "Case " << i << ":" << " " << num << endl;
-    i++;
+        cin >> num;
+        if (num == 0) break;
+        i++;
+
+        // 出力定義
+        cout << "Case " << i << ":" << " " << num << endl;
     }
+    return 0;
 }

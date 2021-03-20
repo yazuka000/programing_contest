@@ -1,19 +1,29 @@
+/* sample input
+8
+3 3 4 4 5 8 7 9
+*/
+
 #include <bits/stdc++.h> 
 using namespace std;
 
 int main() {
+    // 初期値定義
     int num;
     cin >> num;
     int a[num];
 
+    // 処理定義
     int i;
-    for (i=0;i<num;i++){
+    for (i=0; i<num; i++){
         cin >> a[i];
     }
-    for (i=num-1;i>0;i--){
+
+    // 出力定義
+    for (i=num-1; i>0; i--){
         cout << a[i] << " ";
     }
     cout << a[0] << endl;
+    
     return 0;
 }
 

@@ -13,7 +13,10 @@
 using namespace std;
 
 int main() {
+    // 初期値定義
     int x, y;
+
+    // 処理・出力定義
     while(true){
         cin >> x >> y;
         if (x == 0 && y == 0) break;

@@ -59,8 +59,11 @@ int main() {
 using namespace std;
 
 int main(){
+    // 初期値定義
     int a, b;
     cin >> a >> b;
+
+    // 処理・出力定義
     if(a > b) {
         cout << "a > b" << endl;
     } else if(a < b) {
