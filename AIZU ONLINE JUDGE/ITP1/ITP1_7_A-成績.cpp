@@ -9,8 +9,10 @@
 using namespace std;
 
 int main() {
+	// 初期値定義
     int m, f, r;
 
+	// 処理・出力定義
 	while(true){
 		cin >> m >> f >> r;
 		if(m == -1 && f == -1 && r == -1) break;
@@ -36,7 +38,27 @@ int main() {
 }
 
 
+/*
+#include<iostream>
+using namespace std;
+int main(){
+  int m,f,r;
+  cin >> m >> f >> r;
+  while(m!=-1||f!=-1||r!=-1){
+    if(m==-1||f==-1) cout << "F" << endl;
+    else if(m+f>=80) cout << "A" << endl;
+    else if(m+f>=65) cout << "B" << endl;
+    else if(m+f>=50) cout << "C" << endl;
+    else if(m+f>=30)
+      if(r>=50) cout << "C" << endl;
+      else cout << "D" << endl;
+    else cout << "F" << endl;
 
+    cin >> m >> f >> r;
+  }
+  return 0;
+}
+*/
 
 
 

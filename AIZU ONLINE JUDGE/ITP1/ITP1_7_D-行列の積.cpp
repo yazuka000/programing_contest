@@ -35,7 +35,7 @@ int main() {
 		}
 	}
 
-	for(int i = 0; i<n; i++){
+	for(int i=0; i<n; i++){
 		for(int k=0; k<l; k++){
 			for(int j=0; j<m; j++){
 				C[i][k] += A[i][j]*B[j][k];
@@ -44,7 +44,7 @@ int main() {
 	}
 
     // 出力定義
-    for(int i = 0; i<n; i++){
+    for(int i=0; i<n; i++){
 		for(int j=0; j<l-1; j++){
 			cout << C[i][j] << " ";
 		}

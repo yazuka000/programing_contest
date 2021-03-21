@@ -10,6 +10,7 @@
 using namespace std;
 
 int main() {
+	// 初期値定義
     int r, c, sum, total_sum=0;
     cin >> r >> c;
 	int table[r+1][c+1];
@@ -21,7 +22,8 @@ int main() {
 	}
 
 
-	for(int i = 0; i < r; i++){
+	// 処理定義
+	for(int i=0; i<r; i++){
 		sum = 0;
 		for(int j = 0; j < c; j++){
 			cin >> table[i][j];
@@ -33,7 +35,7 @@ int main() {
 	}
 	table[r][c] = total_sum;
 
-
+	// 出力定義
 	for(int i = 0; i < r+1; i++){
 		for(int j = 0; j < c; j++){
 			cout << table[i][j] << " ";
@@ -44,7 +46,39 @@ int main() {
     return 0;
 }
 
-
+/*
+#include<iostream>
+using namespace std;
+int main(){
+  int i,j,k;
+  int r,c;
+  int b;
+  cin >> r >> c;
+  int rsum[100]={};
+  int csum[100]={};
+  int sum=0;
+  for(i=0;i<r;i++){
+    cin >> b;
+    cout << b;
+    rsum[i]+=b;
+    csum[0]+=b; 
+    for(j=1;j<c;j++){
+      cin >> b;
+      cout <<" " << b;
+      rsum[i]+=b;
+      csum[j]+=b; 
+    }
+    cout << " " << rsum[i] << endl;
+    sum+=rsum[i];
+  }
+  cout << csum[0];
+  for(j=1;j<c;j++){
+    cout << " " << csum[j];    
+  }
+  cout << " " << sum <<  endl;
+  return 0;
+}
+*/
 
 /*
 #include <stdio.h>

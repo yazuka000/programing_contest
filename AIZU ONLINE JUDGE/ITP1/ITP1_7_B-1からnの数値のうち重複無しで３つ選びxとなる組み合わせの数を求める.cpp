@@ -14,10 +14,12 @@ int main() {
 		if(n == 0 && x == 0) break;
 		sum = 0;
 
-		for(int i=1; i < x/3 && i <= n-2; i++){
-			for(int j=i+1; j < x - (i+j) && j <= n-1; j++){
-				if(x-(i+j) <= n){
-					sum++;
+		for(int i=1; i<=n-2; i++){
+			for(int j=i+1; j<=n-1; j++){
+				for(int k=j+1; k<=n; k++){
+					if(i+j+k == x){
+						sum++;
+					}
 				}
 			}
 		}
@@ -28,7 +30,28 @@ int main() {
 }
 
 
-
+/*
+#include <iostream>
+using namespace std;
+int main(){
+  int n,x;
+  cin >> n >> x;
+  while(n!=0||x!=0){
+    int i,j,k;
+    int o=0;
+    for(i=1;i<=n;i++){
+      for(j=i+1;j<=n;j++){
+	for(k=j+1;k<=n;k++){
+	  if(i+j+k==x) o++;
+	}
+      }
+    }
+    cout << o << endl;
+    cin >> n >> x;
+  }
+  return 0;
+}
+*/
 
 
 

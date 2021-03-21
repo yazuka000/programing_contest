@@ -5,6 +5,28 @@ This is a pen.
 #include <bits/stdc++.h> 
 using namespace std;
 
+int main(){
+	string str;
+	int ab[26]={};
+
+while(getline(cin,str)){
+    for(int i=0;i<str.size();i++){
+    if(str[i]>='a' && str[i]<='z') ab[str[i]-'a']++;
+    else if(str[i]>='A'&&str[i]<='Z') ab[str[i]-'A']++;
+    }
+
+	}
+	for(int i=0; i<26; i++){
+		cout << (char)('a'+i) << " : " << ab[i] << endl;
+	}
+
+return 0;
+}
+
+/*
+#include <bits/stdc++.h> 
+using namespace std;
+
 int main() {
     // 初期値定義
 	int countTable[256] = {0};
@@ -22,6 +44,7 @@ int main() {
 	
     return 0;
 }
+*/
 
 
 // printf("%c : %d\n",i,countTable[i]+countTable[i-32]);
