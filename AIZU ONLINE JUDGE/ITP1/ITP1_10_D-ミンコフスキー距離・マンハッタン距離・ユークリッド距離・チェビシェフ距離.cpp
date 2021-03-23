@@ -19,9 +19,19 @@ int main(){
 
 	double o1=0,o2=0,o3=0,oe=0;
 	for(i=0;i<d;i++){
+
+		// fabsで値の絶対値が求められる
+
+		// マンハッタン距離の公式
 		o1+=fabs(a[i]-b[i]);
+
+		// ユークリッド距離の公式
 		o2+=fabs(a[i]-b[i])*fabs(a[i]-b[i]);
+
+		// 
 		o3+=fabs(a[i]-b[i])*fabs(a[i]-b[i])*fabs(a[i]-b[i]);
+
+		// チェビシェフ距離
 		oe=max(oe,fabs(a[i]-b[i]));
 	}
 	

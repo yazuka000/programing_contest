@@ -6,6 +6,27 @@ advance
 #include <bits/stdc++.h> 
 using namespace std;
 
+int main(){
+	// 初期値定義
+	string s,p;
+	cin >> s >> p;
+
+	// 2周させるために、sを２倍にしている
+	s=s+s;
+
+	// 処理・出力定義
+	if(s.find(p)!=-1){
+		cout << "Yes" << endl;
+	} else{
+		cout << "No" << endl;
+	}
+	return 0;
+}
+
+/*
+#include <bits/stdc++.h> 
+using namespace std;
+
 int main() {
     // 初期値定義
 	int j,s_length = 0;
@@ -28,7 +49,22 @@ int main() {
 	printf("No\n");
     return 0;
 }
+*/
 
+/*
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(){
+  string s,p;
+  cin >> s >> p;
+  s=s+s;
+  if(s.find(p)!=-1) cout << "Yes" << endl;
+  else cout << "No" << endl;
+  return 0;
+}
+*/
 
 /*
 #include <stdio.h>

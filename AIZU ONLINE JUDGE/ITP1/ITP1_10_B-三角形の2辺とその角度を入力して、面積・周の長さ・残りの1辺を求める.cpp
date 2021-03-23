@@ -12,7 +12,13 @@ int main() {
 	scanf("%lf %lf %lf",&a,&b,&degree);
 
     // 処理定義
+
+	// sin(M_PI*degree/180)やcos(M_PI*degree/180)
+
+	// 三角形の面積sを求めている
 	s = (0.5)*a*b*sin(M_PI*degree/180);
+
+	// 辺a、bと2辺の間の角度、円周率M_PIから、辺cの長さを求めている
 	c = sqrt(a*a+b*b-2*a*b*cos(M_PI*degree/180));
 
     // 出力定義

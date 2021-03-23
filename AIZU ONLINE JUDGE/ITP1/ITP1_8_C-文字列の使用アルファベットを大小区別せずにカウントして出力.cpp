@@ -20,7 +20,7 @@ while(getline(cin,str)){
 		cout << (char)('a'+i) << " : " << ab[i] << endl;
 	}
 
-return 0;
+	return 0;
 }
 
 /*
