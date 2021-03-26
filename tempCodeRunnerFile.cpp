@@ -1,2 +1,1 @@
-Ji
-JiJiiJiIjiIJjIJi
+9 45000
