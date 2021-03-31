@@ -1,6 +1,5 @@
-5
-A -2
-E 0
-W -5
-A -1
-E -20
+XXOXO
+OXOXX
+.OXXO
+OXOO.
+XXXXX

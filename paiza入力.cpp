@@ -1,5 +1,9 @@
 /* sample input
-
+XXOXO
+OXOXX
+.OXXO
+OXOO.
+XXXXX
 */
 
 #include <bits/stdc++.h> 
@@ -18,3 +22,7 @@ int main() {
 
     return 0;
 }
+
+/* 参考回答
+
+*/
