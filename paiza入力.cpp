@@ -1,9 +1,5 @@
 /* sample input
-XXOXO
-OXOXX
-.OXXO
-OXOO.
-XXXXX
+
 */
 
 #include <bits/stdc++.h> 
