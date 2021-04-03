@@ -1,5 +1,19 @@
 /* sample input
+3 3 1 1 E
+..#
+..#
+...
 
+9 2 4 0 S
+#.
+#.
+..
+##
+..
+..
+.#
+..
+.#
 */
 
 #include <bits/stdc++.h> 
@@ -8,17 +22,79 @@ using namespace std;
 
 int main() {
     // 初期値定義
-    int a, b;
-    cin >> a >> b;
+    int h, w, sx, sy;
+    char m;
+    cin >> h >> w >> sy >> sx >> m;
+    vector<string> bd(h);
 
-    // 処理定義
+    rep(i, h){
+        cin >> bd[i];
+    }
 
-    // 出力定義
+   // 処理定義
+
+    switch(m){
+        case 'N':
+            sy--;
+            break;
+        case 'S':
+            sy++;
+            break;
+        case 'W':
+            sx--;
+            break;
+        case 'E':
+            sx++;
+            break;
+    }
+
     
-
-    return 0;
+    // 出力
+    if(0 <= sx && sx < w && 0 <= sy && sy < h && bd[sy][sx] != '#'){
+        cout << "Yes" << endl;
+    } else {
+        cout << "No" << endl;
+    }
 }
 
 /* 参考回答
+#include <iostream>
+#include <string>
+#include <vector>
 
+using namespace std;
+
+int sx,sy;
+
+void move(char D){
+    if(D == 'N'){
+        sy--;
+    }else if(D == 'S'){
+        sy++;
+    }else if(D == 'E'){
+        sx++;
+    }else{
+        sx--;
+    }
+}
+
+int main(){
+    int H,W;
+    char m;
+    cin >> H >> W >> sy >> sx >> m;
+    vector<string> S(H);
+
+    for(int i = 0; i < H; i++){
+        cin >> S[i];
+    }
+
+    move(m);
+
+    if(0 <= sx && sx < W && 0 <= sy && sy < H && S[sy][sx] != '#'){
+        cout << "Yes" << endl;
+    }else{
+        cout << "No" << endl;
+    }
+
+}
 */

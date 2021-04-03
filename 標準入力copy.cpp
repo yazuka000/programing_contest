@@ -31,6 +31,16 @@ if (条件){
 　　処理
 }
 
+    switch(m){
+        case 'N':
+
+        case 'S':
+
+        case 'W':
+
+        case 'E':
+    }
+
 for (int i = 0; i < 3; i++) {
 	cout <<  i << "\n";
 	}
