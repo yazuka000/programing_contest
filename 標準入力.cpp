@@ -1,10 +1,3 @@
-/*
-    for (auto i = seqLen.begin(); i != seqLen.end(); ++i) {
-        std::cout << i->first << " => " << i->second << std::endl;
-
-#define repr(i, a, b) for (int i = a; i < b; i++)
-*/
-
 /* sample input
 
 */
@@ -29,6 +22,3 @@ int main() {
 /* 参考回答
 
 */
-
-
-

@@ -87,6 +87,59 @@ int main() {
     return 0;
 }
 
-/* 参考回答
 
+
+/* 別回答
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+char direct[4] = {'N','E','S','W'};
+int dcount = 0,sx,sy;
+
+void move(char D, char M){
+    int LR = 1,add = 1;
+
+    if(M == 'L'){
+        LR = -1;
+        add = 3;
+    }
+
+    if(D == 'N'){
+        sx += LR;
+    }else if(D == 'S'){
+        sx -= LR;
+    }else if(D == 'E'){
+        sy += LR;
+    }else{
+        sy -= LR;
+    }
+    
+    dcount += add;
+}
+
+int main(){
+    int H,W,N;
+    cin >> H >> W >> sy >> sx >> N;
+
+    vector<string> mp(H);
+
+    for (int i = 0; i < H; i++){
+        cin >> mp[i];
+    }
+
+    for (int i = 0; i < N; i++){
+        char m;
+        cin >> m;
+        move(direct[dcount%4],m);
+        if(0 <= sx && sx < W && 0 <= sy && sy < H && mp[sy][sx] != '#'){
+            cout << sy << " "<< sx << endl;
+        }else{
+            cout << "Stop" << endl;
+            break;
+        }
+    }
+}
 */

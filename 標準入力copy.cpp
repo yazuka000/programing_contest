@@ -47,6 +47,15 @@ for (int i = 0; i < 3; i++) {
 return 0;
 }
 
+
+    for (auto i = seqLen.begin(); i != seqLen.end(); ++i) {
+        std::cout << i->first << " => " << i->second << std::endl;
+
+#define repr(i, a, b) for (int i = a; i < b; i++)
+
+
+
+
 while True:
 if (num == 0) break;
 
