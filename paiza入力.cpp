@@ -1,89 +1,50 @@
 /* sample input
-7 3 2 1 5
-..#
-...
-...
-...
-..#
-.#.
-##.
-L
-L
-L
-L
-L
+30 30 10
+3
+6 0
+7 0
+8 0
+
+// 8:59までにつく
 */
 
 #include <bits/stdc++.h> 
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
-int x=0, y=0, nowx=x, nowy=y;
-
-void move(char lr){
-   if(x < nowx){ // 左向き
-        nowy=y;
-        nowx=x;
-        if(lr == 'L'){
-            y++;
-        } else {
-            y--;
-        }
-    }else if(x > nowx){ // 右向き
-        nowy=y;
-        nowx=x;
-        if(lr == 'L'){
-            y--;
-        } else {
-            y++;
-        }
-    }else if(nowy < y){ // 下向き
-        nowy=y;
-        nowx=x;
-        if(lr == 'L'){
-            x++;
-        } else {
-            x--;
-        }
-    }else{ // 上向き
-        nowy=y;
-        nowx=x;
-        if(lr == 'L'){ 
-            x--;
-        } else {
-            x++;
-        }
-    }
-}
-
-
 int main() {
     // 初期値定義
-    int h, w, n;
-    cin >> h >> w >> y >> x >> n;
-    char lr;
-    vector<string> bd(h);
+    int a, b, c, n, h, m, ma=-10000000;
+    cin >> a >> b >> c;
+    cin >> n;
 
-    rep(i, h){
-        cin >> bd[i];
-    }
+    int time=b+c;
+    int limit=9*60;
 
     // 処理定義
-    nowx=x;
-    nowy=y;
-
     rep(i, n){
-        cin >> lr;
-        move(lr);
-
-        // 出力定義
-        if(0 <= y && y <= h && 0 <= x && x <= w && bd[y][x] != '#'){
-            cout << y << " " << x << endl;
-        } else {
-            cout << "Stop" << endl;
-            break;
+        cin >> h >> m;
+        int b_go=h*60+m;
+        if(limit > b_go+time){
+            ma=max(ma, b_go+time);
         }
     }
+
+    int go=ma-(a+b+c);
+
+    int hh=go/60;
+    int mm=go%60;
+
+    // 出力定義
+    if(hh < 10 && mm < 10){
+        cout << '0' << hh << ":" << '0' << mm << endl;
+    }else if(hh < 10){
+        cout << '0' << hh << ":" << mm << endl;
+    }else if(mm < 10){
+        cout << hh << ":" << '0' << mm << endl;
+    }else {
+        cout << hh << ":" << mm << endl;
+    }    
     return 0;
 }
 
