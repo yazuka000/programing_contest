@@ -1,53 +1,155 @@
 /* sample input
-30 30 10
-3
-6 0
-7 0
-8 0
-
-// 8:59までにつく
+10 10 4 5 3
+.......#..
+..........
+..........
+#.........
+..........
+......#...
+..........
+....#.....
+...#......
+..........
+L 3
+R 1
+R 3
 */
 
 #include <bits/stdc++.h> 
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
+
+char direct[4] = {'N','E','S','W'};
+int dcount = 0, sx, sy, H, W;
+bool stop = false;
+
+// 処理関数
+void move(char D, char M, int l, vector<string>& MP){
+    int LR=1, add=1;
+
+    MP[sy][sx] = '*';
+
+    if(M == 'L'){
+        LR = -1;
+        add = 3;
+    }
+
+    for(int i=0; i<l; i++){
+        if(D == 'N'){
+            sx += LR;
+        }else if(D == 'S'){
+            sx -= LR;
+        }else if(D == 'E'){
+            sy += LR;
+        }else{
+            sy -= LR;
+        }
+
+
+        if(!(0 <= sx && sx < W && 0 <= sy && sy < H && MP[sy][sx] != '#')){
+            stop = true;
+            break;
+        }
+
+        MP[sy][sx]='*'; 
+
+    }
+    dcount += add;
+}
+
 int main() {
     // 初期値定義
-    int a, b, c, n, h, m, ma=-10000000;
-    cin >> a >> b >> c;
-    cin >> n;
+    int n, go;
+    char lr;
+    cin >> H >> W >> sy >> sx >> n;
+    vector<string> bd(H);
 
-    int time=b+c;
-    int limit=9*60;
+    rep(i, H){
+        cin >> bd[i];
+    }
 
     // 処理定義
     rep(i, n){
-        cin >> h >> m;
-        int b_go=h*60+m;
-        if(limit > b_go+time){
-            ma=max(ma, b_go+time);
+        cin >> lr >> go;
+        move(direct[dcount%4], lr, go, bd);
+        if(stop){
+            break;
         }
     }
 
-    int go=ma-(a+b+c);
-
-    int hh=go/60;
-    int mm=go%60;
-
     // 出力定義
-    if(hh < 10 && mm < 10){
-        cout << '0' << hh << ":" << '0' << mm << endl;
-    }else if(hh < 10){
-        cout << '0' << hh << ":" << mm << endl;
-    }else if(mm < 10){
-        cout << hh << ":" << '0' << mm << endl;
-    }else {
-        cout << hh << ":" << mm << endl;
-    }    
+    rep(i, H){
+        cout << bd[i] << endl;
+    }
     return 0;
 }
 
 /* 参考回答
+#include <iostream>
+#include <string>
+#include <vector>
 
+using namespace std;
+
+char direct[4] = {'N','E','S','W'};
+int dcount = 0,sx,sy,H,W;
+bool stop = false;
+
+void move(char D, char M, int l, vector<string>& MP){
+    int LR = 1,add = 1;
+    
+    MP[sy][sx] = '*';
+
+    if(M == 'L'){
+        LR = -1;
+        add = 3;
+    }
+
+    for (int i = 0; i < l; i++){
+        if(D == 'N'){
+            sx += LR;
+        }else if(D == 'S'){
+            sx -= LR;
+        }else if(D == 'E'){
+            sy += LR;
+        }else{
+            sy -= LR;
+        }
+
+        if(!(0 <= sx && sx < W && 0 <= sy && sy < H && MP[sy][sx] != '#')){
+            stop = true;
+            break;
+        }
+
+        MP[sy][sx] = '*';
+    }
+    dcount += add;
+}
+
+int main(){
+    int N;
+    cin >> H >> W >> sy >> sx >> N;
+
+    vector<string> mp(H);
+
+    for (int i = 0; i < H; i++){
+        cin >> mp[i];
+    }
+
+
+    for (int i = 0; i < N; i++){
+        char m;
+        int l;
+        cin >> m >> l;
+        move(direct[dcount%4],m,l,mp);
+        if(stop){
+            break;
+        }
+    }
+
+    for (int i = 0; i < H; i++){
+        cout << mp[i] << endl;
+    }
+}
 */
