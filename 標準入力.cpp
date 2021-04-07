@@ -2,6 +2,10 @@
 
 */
 
+/* 実装方針
+
+*/
+
 #include <bits/stdc++.h> 
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
@@ -9,6 +13,8 @@ using namespace std;
 int main(){
     // 初期値
     int a;
+
+    // 入力
 
     // 処理
 
