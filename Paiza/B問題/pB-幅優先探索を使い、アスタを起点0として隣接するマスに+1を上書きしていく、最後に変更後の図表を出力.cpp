@@ -1,34 +1,8 @@
 /* sample input
-3 3 2
+3 3
 *..
 ...
 ...
-1
-3
-
-10 10 5
-##*#####..
-..........
-.#.#......
-##..#.....
-#########.
-..........
-..........
-##########
-..........
-..........
-1
-4
-5
-7
-9
-
-2 2 3
-*.
-..
-0
-1
-2
 */
 
 /* 実装方針
@@ -52,22 +26,23 @@ using namespace std;
 
 int main(){
     // 初期値
-    int h, w, num, ex[50];
-    cin >> h >> w >> num;
-    vector<string> bd(h);
+    int h, w, count=0;
+    cin >> h >> w;
+    vector<string>bd(h);
     bool out=false;
     tuple<int,int,int> T;
     queue<tuple<int, int, int>> Q;
 
     // 入力
-    rep(i, h) cin >>bd[i];
-    
-    rep(i, num) cin >> ex[i];
+    rep(i, h){
+        cin >>bd[i];
+    }
 
     // 処理
     rep(i, h){
         rep(j, w){
             if(bd[i][j]=='*'){
+                bd[i][j]='0';
                 Q.emplace(i, j, 0);
                 out = true;
                 break;
@@ -79,38 +54,21 @@ int main(){
         }
     }
 
-
     while(!Q.empty()){
         T=Q.front();
         Q.pop();
 
         int y=get<0>(T), x=get<1>(T), n=get<2>(T);
 
-        rep(i, num){
-            if(ex[i]==0){
-                bd[y][x]='?';
-            }
-        }
-
         for(int i=-1; i<=1; i+=2){
 
             if(0<=y+i && y+i<h && bd[y+i][x]=='.'){
-                bd[y+i][x]='*';
-                rep(j, num){
-                    if(ex[j]==n+1){
-                        bd[y+i][x]='?';
-                    }
-                }
+                bd[y+i][x]=n+1+'0';
                 Q.emplace(y+i, x, n+1);
             }
 
             if(0<=x+i && x+i<w && bd[y][x+i]=='.'){
-                bd[y][x+i]='*';
-                rep(j, num){
-                    if(ex[j]==n+1){
-                        bd[y][x+i]='?';
-                    }
-                }
+                bd[y][x+i]=n+1+'0';
                 Q.emplace(y, x+i, n+1);
             }
         }
@@ -130,16 +88,14 @@ int main(){
 #include <tuple>
 #include <utility>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
 int main(){
-    int H,W,N,Lnum = 0;
+    int H,W;
     bool out = false; 
-    cin >> H >> W >> N;
+    cin >> H >> W;
     vector<string> S(H);
-    vector<long long int> L(N+1);
     tuple<int,int,int> T;
     queue<tuple<int,int,int> > Q;
 
@@ -147,23 +103,11 @@ int main(){
         cin >> S[i];
     }
 
-    for (int i = 0; i < N; i++){
-        cin >> L[i];
-    }
-
-    L[N] = 1e9;
-
-    sort(L.begin(),L.end());
-
     for (int i = 0; i < H; i++){
         for (int j = 0; j < W; j++){
             if(S[i][j] == '*'){
                 Q.emplace(i,j,0);
-                if(L[Lnum] == 0){
-                    S[i][j] = '?';
-                }else{
-                    S[i][j] = '*';
-                }
+                S[i][j] = '0';
                 out = true;
                 break;
             }
@@ -179,27 +123,15 @@ int main(){
         Q.pop();
         int y = get<0>(T), x = get<1>(T), n = get<2>(T);
 
-        if(L[Lnum] <= n){
-            Lnum++;
-        }
-
         for (int i = -1; i <= 1; i += 2){
-        
+            
             if(0 <= y+i && y+i < H && S[y+i][x] == '.'){
-                if(n+1 == L[Lnum]){
-                    S[y+i][x] = '?';
-                }else{
-                    S[y+i][x] = '*';
-                }
+                S[y+i][x] = n+1+'0';
                 Q.emplace(y+i,x,n+1);
             }
 
             if(0 <= x+i && x+i < W && S[y][x+i] == '.'){
-                if(n+1 == L[Lnum]){
-                    S[y][x+i] = '?';
-                }else{
-                    S[y][x+i] = '*';
-                }
+                S[y][x+i] = n+1+'0';
                 Q.emplace(y,x+i,n+1);
             }
         }
