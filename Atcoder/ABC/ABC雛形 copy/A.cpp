@@ -2,21 +2,24 @@
 
 */
 
+/* 実装方針
+
+*/
+
 #include <bits/stdc++.h> 
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
-int main() {
-    // 初期値定義
-    int a, b;
-    cin >> a >> b;
+int main(){
+    // 初期値
+    int a;
 
-    // 処理定義
+    // 入力
 
-    // 出力定義
-    
+    // 処理
 
-    return 0;
+    // 出力
+    cout << a << endl;
 }
 
 /* 参考回答
