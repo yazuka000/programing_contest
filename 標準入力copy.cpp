@@ -3,12 +3,7 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
-int main() {
-    int N;
-    cin >> N;
 
-    cout << N << endl;
-}
 
 
 int main() {
@@ -16,11 +11,6 @@ int main() {
     getline(cin,s);
     cout << s << "\n";
     cout << s[0];
-}
-
-int main(){
-    cout << "Hello World" << endl;
-    return 0;
 }
 
 if (条件){
@@ -41,20 +31,25 @@ if (条件){
         case 'E':
     }
 
-for (int i = 0; i < 3; i++) {
-	cout <<  i << "\n";
-	}
-return 0;
-}
-
 
     for (auto i = seqLen.begin(); i != seqLen.end(); ++i) {
         std::cout << i->first << " => " << i->second << std::endl;
 
+
 #define repr(i, a, b) for (int i = a; i < b; i++)
 
 
+vector<vector<int>> bd (h, vector<int>(w, '.')); 
 
+    for (int i=0; i<h; i++){
+        for (int j=0; j<w; j++){
+            if(i==y && j==x){
+                bd[i][j]='!';
+            }else if(abs(i-y) == abs(j-x)){
+                bd[i][j]='*';
+            }
+        }
+    }
 
 while True:
 if (num == 0) break;
@@ -71,46 +66,33 @@ int main()
 	return 0;
 }
 
-#include <iostream>
-#include <bits/stdc++.h> 
-using namespace std;
 
-int main() {
-
-    cin >> a >> b;
-    cout <<  << endl;
-    return 0;
-}
 */
 
 /* sample input
-3 4
-5 6
-2 2
-0 0
-*/
-
-/* 制約・条件
 
 */
 
-#include <bits/stdc++.h>
+/* 実装方針
+
+*/
+
+#include <bits/stdc++.h> 
 using namespace std;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
-int main() {
-    int a, b;
-    while(true){
-    cin >> a >> b;
-    if(a == 0 && b == 0) break;
+int main(){
+    // 初期値
+    int a;
 
-    int i, x;
-    for(i=0;i<a;i++){
-        for(x=0;x<b;x++){
-            cout << "#";
-        }
-        cout << endl;
-    }
-    cout << endl;
-    }
-    return 0;
+    // 入力
+
+    // 処理
+
+    // 出力
+    cout << a << endl;
 }
+
+/* 参考回答
+
+*/
