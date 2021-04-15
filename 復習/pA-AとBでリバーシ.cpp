@@ -31,21 +31,27 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
 int main(){
+    // 初期値
     int h, w, n, y, x;
     char ab[2] = {'A','B'};
     cin >> h >> w >> n;
     vector<string> bd(h);
     
+    // 入力
     rep(i, h) cin >> bd[i];   
     
+    // 処理
+
     for(int l=0; l<n*2; l++){
         cin >> y >> x;
 
         bd[y][x]=ab[l%2];
         
+        // 斜め判定
         for (int i =-1; i<=1; i+=2){
             for (int j=1; ; j++){
 
+                // xとyが座標外に出てしまった場合と座標に#があったとき、ループを抜ける
                 if(x+(i*j)==-1 || x+(i*j)==w || y+(i*j)==-1 || y+(i*j)==h || bd[y+(i*j)][x+(i*j)]=='#'){
                     break;
                 }
@@ -60,9 +66,11 @@ int main(){
             }
         }
 
+        // 斜め判定
         for (int i=-1; i<=1; i+=2){
             for (int j=1; ; j++){
 
+                // xとyが座標外に出てしまった場合と座標に#があったとき、ループを抜ける
                 if(x+(i*j)==-1 || x+(i*j)==w || y-(i*j)==-1 || y-(i*j)==h || bd[y-(i*j)][x+(i*j)]=='#'){
                     break;
                 }
@@ -76,9 +84,11 @@ int main(){
             }
         }
 
+        // 縦の判定
         for (int i=-1; i<=1; i+=2){
             for (int j=1; ; j++){
 
+                // xとyが座標外に出てしまった場合と座標に#があったとき、ループを抜ける
                 if(y+(i*j)==-1 || y+(i*j)==h || bd[y+(i*j)][x]=='#'){
                     break;
                 }
@@ -92,9 +102,11 @@ int main(){
             }
         }
 
+        // 横の判定
         for (int i=-1; i<=1; i+=2){
             for (int j = 1; ; j++){
 
+                // xとyが座標外に出てしまった場合と座標に#があったとき、ループを抜ける
                 if(x+(i*j)==-1 || x+(i*j)==w || bd[y][x+(i*j)]=='#'){
                     break;
                 }
@@ -109,6 +121,7 @@ int main(){
         }
     }
 
+    // 出力
     rep(i, h){
         cout << bd[i] << endl;
     }
