@@ -1,2 +1,2 @@
-1 10
-11
+
+    long long int ans = 1e9, n, k;
