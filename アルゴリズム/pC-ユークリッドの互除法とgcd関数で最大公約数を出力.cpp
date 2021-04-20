@@ -24,7 +24,7 @@ long long int gcd(long long int A, long long int B){
         return A;
     }
     // 「AとBの最大公約数は、BとA%Bの公約数と等しい」
-    return gcd(B,A%B);
+    return gcd(B, A%B);
 }
 
 int main(){
