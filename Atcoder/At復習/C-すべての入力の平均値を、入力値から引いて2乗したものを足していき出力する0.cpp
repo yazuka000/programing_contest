@@ -16,30 +16,38 @@
 
 */
 
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
-#define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
-int main(){
-    // 初期値
-    int N, ans=0, j=0;
-    cin >> N;
-    vector<int> n(N);
-
-    // 入力
-    rep(i, N){
-        cin >> n[i];
+int main() {
+	int n; 
+	cin >> n; 
+	
+	vector <int> a(n); 
+	
+    // 入力値を合計していく
+	int avg = 0; 
+	for (int i = 0; i < n; i++){
+        cin >> a[i];
+        avg += a[i]; 
     }
 
-    // 処理
-    while(1){
+    // cout << avg << endl;
+	
+    // 入力値の合計をround関数とnを使って、平均値をavgに代入
+	avg = round((double)avg / n);
+	
 
+    // a[i]に入力された値に平均値avgを引いて2乗したものをresに足していく、それを要素の数だけ繰り返す
+	int res = 0; 
+	for (int i = 0; i < n; i++){
+        res += (a[i] - avg) * (a[i] - avg); 
     }
-
-
-    // 出力
-    // cout << a << endl;
+	
+    // cout << avg << endl;
+	cout << res << endl; 
 }
+
 
 /* 参考回答
 #include <bits/stdc++.h>
