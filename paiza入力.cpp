@@ -1,122 +1,132 @@
 /* sample input
-2 3
+10000 3
 
-2 1
+解 10303
 
-5 9
+10 10
+
+解 11
+
+1000000000 5
+
+99 30
 */
 
 /* 実装方針
-報酬は 2N 個のアイテムであり、それぞれの価値は 1, 2, ..., 2N です。
-
-・A 君と B 君はどちらも N 個のアイテムをもらう。
-・A 君と B 君がそれぞれ貰うアイテムを小さい順に並べ、各アイテムごとの価値の差の絶対値を合計した値が K 以下になる。
-
-
-答えは必ず偶数になる
-条件に関わらず、全てのアイテム配分の通りは、2nの階乗になる
-
-各絶対値は、必ず 「1 <= x <= n」になる
-n > k の場合、組み合わせは存在せず、0になる
-
-    // 初期値
-    // a君とb君がそれぞれもらえるアイテム個数n個
-    // アイテムの総数 2n個
-    // もらったアイテムの価値を小さい順に並べて、小さい者同士で比較して「絶対値の合計の差」がk以下になるようにする
 
 */
 
 #include <bits/stdc++.h> 
 using namespace std;
-using ll=long long;
+using ll = long long; 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
 int main(){
+    // 初期値
+    // sは武器の初期の強さ、pは強化ポイント
+    ll s, p, maxx, count=0;
+    cin >> s >> p;
 
-    int n, k;
-    cin >> n >> k;
+    // 入力
+    ll x=s, x1, x2;
 
-    float x=k-n;
+    // 処理
+    if(x < 100){
+        for(int i=1; i<=p; i++){
+            x1 = x * (100+i) / 100;
+            if(x1 >= 100){
+                p-=i;
+                x=x1;
+                break;
+            }
 
-    if(x < 0){
-        cout << 0 << endl;
-        return 0;
-    }
-
-    int y=x*ceil(x/2);
-
-    int ans = x+y;
-
-    cout << ans*ans << endl;
-}
-
-/* 参考回答
-
-cout << x << " " << y << " " << ans << endl;
-
-                cnt++;
-
-                cout << i << " " << j << " " << " " << cnt << endl;
-
-    for(int i=1; i<=n; i++){
-
-        for(int j=n; j<=n*2; j++){
-            // iとjが同値なら、その集回は飛ばす
-            if(i==j) continue;
-
-            // k-=abs(i-j);
-
-            // i-jの絶対値が一つでもkを超えたらアウトなのでbreak
-            if(abs(i-j)>=k || abs(i-j)>n) break;
-
-            // if(abs(i-j)>=k) sub_cnt++;
-            // i-jの絶対値をsumに加算していく
-            // sum+=abs(i-j);
-
-            cnt++;
-
-            cout << i << " " << j << " " << cnt << endl;
-        }
-
-        // if(sum<=k) cnt++;
-        // if(sub_cnt==n) cnt++;
-    }
-
-    cout << cnt << endl;
-
-
-    for(int i=0; i<n; i++){
-        
-        for(int j=1; j<=n; j++){
-
-            for(int k=n; k<=2*n; k++){
-
-                sum+=abs(j-k);
+            if(i==p){
+                cout << x1 << endl;
+                return 0;
             }
         }
     }
 
-    for(int i=1; i<=n*2; i++){
+    for(int i=1; i<=p; i++){
+        x = x * (100+1) / 100;
+    }
 
-        for(int j=1; j<=n*2; j++){
-            // iとjが同値なら、その集回は飛ばす
-            if(i==j) continue;
+    // 出力
+    cout << x << endl;
+}
 
-            // k-=abs(i-j);
 
-            // i-jの絶対値が一つでもkを超えたらアウトなのでbreak
-            if(abs(i-j)>=k || abs(i-j)>n) break;
+/* 参考回答
+#include <bits/stdc++.h> 
+using namespace std;
+using ll = long long; 
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
-            // if(abs(i-j)>=k) sub_cnt++;
-            // i-jの絶対値をsumに加算していく
-            // sum+=abs(i-j);
+int main(){
+    // 初期値
+    // sは武器の初期の強さ、pは強化ポイント
+    ll s, p, maxx;
+    cin >> s >> p;
 
-            cnt++;
+    // 入力
+    ll x=s, x1=x, x2;
 
-            cout << i << " " << j << " " << cnt << endl;
+    // 処理
+    if(x >= 100){
+        for(int i=0; i<p; i++){
+            x1 = x1 * (100+1) / 100;
+            cout << x1 << endl;
         }
+    }else{
+        x2 = x * (100+p) / 100;
+    }
 
-        // if(sum<=k) cnt++;
-        // if(sub_cnt==n) cnt++;
+    // 出力
+    cout << maxx << endl;
+}
+
+#include <bits/stdc++.h> 
+using namespace std;
+using ll = long long; 
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+
+int main(){
+    // 初期値
+    // sは武器の初期の強さ、pは強化ポイント
+    ll s, p, maxx;
+    cin >> s >> p;
+
+    // 入力
+    ll x=s, x1=x, x2;
+
+    // 処理
+    if(x >= 100){
+        for(int i=0; i<p; i++){
+            x = x * (100+1) / 100;
+            cout << x1 << endl;
+        }
+    }else{
+        x = x * (100+p) / 100;
+    }
+
+    // 出力
+    cout << x << endl;
+}
+
+    for(int i=1; i<=p; ){
+        if(x >= 100){
+            x = x * (100+1) / 100;
+            i++;
+        }else{
+            for(int j=1; j<=p; j++){
+                x1 = x * (100+j) / 100;
+                if(x1 >= 100){
+                    i=j;
+                    x=x1;
+                    break;
+                }
+            }
+            
+        }
     }
 */
