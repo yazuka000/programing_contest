@@ -21,16 +21,22 @@ int selectionSort(int A[], int N){
     int sw = 0;
 
     for(i=0; i<N; i++){
+        // minjにi(その時の最小のインデックス)を格納する
         minj = i;
 
         for(j=i; j<N; j++){
+            // もしA[j]の値が、A[minj]より小さかった場合、minjにjを代入する
             if(A[j] < A[minj]) minj = j;
         }
 
+        // まず、tにその時のA[i]の値を格納し、変更前の値を保存しておく
         t = A[i];
+        // A[minj]の値をA[i]に格納する
         A[i] = A[minj];
+        // A[minj]には、もとのA[i]の値を格納したtの値を代入する。この一連でソートを行う
         A[minj] = t;
 
+        // iがminjと一致していない、つまりソートを行ったということなので、swに1カウントする
         if(i != minj) sw++;
     }
 
