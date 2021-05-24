@@ -1,8 +1,9 @@
 /* sample input
-10
-8 5 9 2 6 3 7 1 10 4
+5
+3 5 2 1 4
 
-
+3
+3 1 2
 */
 
 /* 実装方針
@@ -13,15 +14,17 @@
 using namespace std;
 typedef long long ll;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
-#define MAX 500000
+#define MAX 200000
 #define SENTINEL 2000000000
 
 // マージソートでは、配列を可能な限り2分割していき、
 int L[MAX/2+2], R[MAX/2+2];
-int cnt;
 
 // mergeとは、合併という意味
-void merge(int A[],int n, int left, int mid, int right){
+ll merge(int A[],int n, int left, int mid, int right){
+    int i, j, k;
+    ll cnt = 0; 
+
     int n1 = mid - left;
     int n2 = right - mid;
 
@@ -30,46 +33,49 @@ void merge(int A[],int n, int left, int mid, int right){
 
     L[n1] = R[n2] = SENTINEL;
 
-    int i = 0, j = 0;
+    i = j = 0;
 
     for(int k=left; k<right; k++){
-        cnt++;
 
         if(L[i] <= R[j]){
             A[k] = L[i++];
         }else{
             A[k] = R[j++];
+            cnt += n1 - i; // =mid + j - k - 1
         }
     }
+
+    return cnt;
 }
 
-void mergeSort(int A[], int n, int left, int right){
+ll mergeSort(int A[], int n, int left, int right){
+    int mid;
+    ll v1, v2, v3;
+
     if(left+1 < right){
         int mid = (left + right) / 2;
 
-        mergeSort(A, n, left, mid);
-        mergeSort(A, n, mid, right);
+        v1 = mergeSort(A, n, left, mid);
+        v2 = mergeSort(A, n, mid, right);
+        v3 = merge(A, n, left, mid, right);
 
-        merge(A, n, left, mid, right);
-    }
+        return v1 + v2 + v3;
+
+    }else return 0;
+
 }
 
 int main(){
     int A[MAX], n, i;
-    cnt = 0;
 
     cin >> n;
-    for(int i=0; i<n; i++) cin >> A[i];
 
-    mergeSort(A, n, 0, n);
+    for(i=0; i<n; i++) cin >> A[i];
 
-    for(int i=0; i<n; i++){
-        if(i) cout << " ";
-        cout << A[i];
-    }
-    cout << endl;
+    ll ans = mergeSort(A, n, 0, n);
 
-    cout << cnt << endl;
+    cout << ans << endl;
+    
 }
 
 /* 参考回答
