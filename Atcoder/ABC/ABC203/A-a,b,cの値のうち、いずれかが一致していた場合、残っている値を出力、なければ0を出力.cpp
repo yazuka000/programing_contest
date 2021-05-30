@@ -1,5 +1,9 @@
 /* sample input
+2 5 2
 
+4 5 6
+
+1 1 1
 */
 
 /* 実装方針
@@ -13,14 +17,17 @@ using ll = long long;
 
 int main(){
     // 初期値
-    int a;
+    int a, b, c;
 
     // 入力
+    cin >> a >> b >> c;
 
     // 処理
+    if(a==b) cout << c << endl;
+    else if(a==c) cout << b << endl;
+    else if(c==b) cout << a << endl;
+    else cout << 0 << endl;
 
-    // 出力
-    cout << a << endl;
 }
 
 /* 参考回答
