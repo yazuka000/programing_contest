@@ -1,11 +1,4 @@
 /* sample input
-6 6
-0 1
-1 2
-3 1
-3 4
-4 5
-5 2
 
 */
 
@@ -17,9 +10,6 @@
 using namespace std;
 typedef long long ll;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
-
-static const int MAX = 100000;
-static const int INFTY = (1<<29);
 
 int main(){
     // 初期値
