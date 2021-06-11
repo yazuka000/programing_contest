@@ -31,9 +31,16 @@ int main(){
     cin >> k >> s >> t;
 
     // answersに、初期値ABCを格納
-    string answers = "ABC";
+    // string answers = "ABC";
+    vector<string> answers(50);
+    answers[0] = "ABC";
 
-    for(int i = 1; i < k; i++) answers = 'A' + answers + 'B' + answers + 'C';
+    for(int i = 1; i < k; i++){
+        // answers = 'A' + answers + 'B' + answers + 'C';
+
+        answers[i] = 'A' + answers[i-1] + 'B' + answers[i-1] + 'C';
+
+    }
 
     // sをマイナス1することで、インデックスのズレを合わせる
     s--;
@@ -43,13 +50,30 @@ int main(){
     // しかし、先頭を基準に、配列の末尾を指定する場合は、末尾の番号から先頭の番号を引くことで、末尾のイテレーターを正確に指定できる
     t -= s;
 
-    string ans = answers.substr(s, t);
+    string ans = answers[k-1].substr(s, t);
+
+    // cout << answers[k-1] << endl;
     cout << ans << endl;
 
     return 0;
 }
 
+
 /* 参考回答
+    string ans = answers.substr(s, t);
+
+    cout << ans << endl;
+
+
+// 123から139 の 17文字
+BAAABCBABCCBAABCB
+BAAABCBABCCBAABCB
+
+
+// 7から23 の 17文字
+BCBABCCBAABCBABCC
+BCBABCCBAABCBABCC
+
 #include <bits/stdc++.h> 
 using namespace std;
 using ll = long long; 
