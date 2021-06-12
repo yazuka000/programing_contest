@@ -32,14 +32,14 @@ int main(){
 
     // answersに、初期値ABCを格納
     // string answers = "ABC";
-    vector<string> answers(50);
+    deque<string> answers(50);
     answers[0] = "ABC";
+    
 
     for(int i = 1; i < k; i++){
         // answers = 'A' + answers + 'B' + answers + 'C';
 
         answers[i] = 'A' + answers[i-1] + 'B' + answers[i-1] + 'C';
-
     }
 
     // sをマイナス1することで、インデックスのズレを合わせる
