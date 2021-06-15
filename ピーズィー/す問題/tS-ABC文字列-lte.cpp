@@ -25,37 +25,71 @@ using namespace std;
 using ll = long long; 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
+string ans = "";
+ll L, C, R;
+
+bool resolve_L(ll level_pos, ll level){
+    if(level_pos == L) return false;
+
+    ans += 'A';
+    return true;
+}
+
+bool resolve_C(ll level_pos, ll level){
+    if(level_pos == C) return false;
+
+    ans += 'B';
+    return true;
+}
+
+bool resolve_R(ll level_pos, ll level){
+    if(level_pos == R) return false;
+
+    ans += 'C';
+    return true;
+}
+
+
 int main(){
-    // kはレベル数、sは文字列の先頭要素の番号、tは末尾要素の指定
     int k, s, t;
     cin >> k >> s >> t;
 
-    // answersに、初期値ABCを格納
-    // string answers = "ABC";
-    deque<string> answers(50);
-    answers[0] = "ABC";
-    
+    ll cur = s, level_pos = s, level = k;
 
-    for(int i = 1; i < k; i++){
-        // answers = 'A' + answers + 'B' + answers + 'C';
+    vector<int> str_cnt(k);
 
-        answers[i] = 'A' + answers[i-1] + 'B' + answers[i-1] + 'C';
+    str_cnt[0] = 3;
+    for(int i=1; i<k; i++){
+        str_cnt[i] += str_cnt[i-1] * 2 + 3;
     }
 
-    // sをマイナス1することで、インデックスのズレを合わせる
-    s--;
+    // cout << str_cnt[k-1] << endl;
 
-    // tからsの数だけ引くことで、sを基準とした末尾のインデックスtを正確に指定する
-    // 単にtをそのまま使ってしまうと、インデックスをうまく指定できない
-    // しかし、先頭を基準に、配列の末尾を指定する場合は、末尾の番号から先頭の番号を引くことで、末尾のイテレーターを正確に指定できる
-    t -= s;
+    // 左のイテレータ
+    L = 0;
 
-    string ans = answers[k-1].substr(s, t);
+    // 中央のイテレータ
+    C = str_cnt[k-1] - str_cnt[k-1] / 2;
 
-    // cout << answers[k-1] << endl;
-    cout << ans << endl;
+    // 右のイテレータ
+    R = str_cnt[k-1];
 
-    return 0;
+    while(s > t){
+        if(resolve_L(level_pos, level) || resolve_C(level_pos, level) || resolve_R(level_pos, level)){
+            cur += 1;
+            break;
+
+        }else{
+            if(C < level_pos){
+                level_pos -= str_cnt[level - 2];
+                level_pos -= 1;
+            }
+            
+            level_pos -= 1;
+            level -= 1;
+        }
+    }
+
 }
 
 
