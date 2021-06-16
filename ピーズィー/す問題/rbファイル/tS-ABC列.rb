@@ -1,3 +1,7 @@
+## sample input
+## 2 3 6
+
+## 10 123 139
 
 # 入力値k, s, tと、ABCstrのインスタンスabc_strを作成し、
 # abc_strのanswer関数で、答えを出力する
@@ -30,6 +34,7 @@ class AbcStr
   def answer
     # @current_posが@tを上回らない限り、関数resolveを行う
     resolve until @current_pos > @t
+    
     @answer
   end
 
@@ -58,7 +63,7 @@ class AbcStr
 
         level_pos -= 1
         level -= 1
-        
+
       end
 
     end
@@ -108,7 +113,7 @@ class AbcStr
 
   # 要求される処理のレベルにおける、文字列の長さを求める
   def prepare_text_length_by_level
-    # 配列@lengthの[1]~[3]までに、同数の値を格納する
+    # 配列@lengthの[1]に、3を格納する
     @length = { 1 => 3 }
 
     # levelは、for文で言うiと同じ意味合い

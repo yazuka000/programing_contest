@@ -18,7 +18,117 @@ sからマイナス1して先頭のイテレータ、その後tからsの値を�
 
 stringの配列から[k-1]した要素の、sからtまでの部分文字列を出力
 
+BAAABCBABCCBAABCB
+AAAAAAAAAAAAAAAAA
+
+BAAABCBABCCBAABCB
+BAAABCBABCCBAABCB
 */
+
+#include <bits/stdc++.h> 
+using namespace std;
+using ll = long long; 
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+
+string ans = "";
+
+bool resolve_L(int level_pos, int x){
+    if(level_pos != x){
+        return false;
+    }else{
+        ans += "A";
+        return true;
+    }
+}
+
+bool resolve_C(int level_pos, int x){
+    if(level_pos != x){
+        return false;
+    }else{
+        ans += "B";
+        return true;
+    }
+}
+
+bool resolve_R(int level_pos, int x){
+    if(level_pos != x){
+        return false;
+    }else{
+        ans += "C";
+        return true;
+    }
+}
+
+int main(){
+    ll k, s, t;
+
+    cin >> k >> s >> t;
+
+    int cur = s;
+
+    vector<int> str_cnt(k);
+
+    str_cnt[0] = 0;
+    str_cnt[1] = 3;
+
+    for(int i=2; i<=k; i++){
+        str_cnt[i] = str_cnt[i-1] * 2 + 3;
+    }
+
+    while(cur <= t){
+        int level = k, level_pos = cur;
+
+        while(1){
+            // 先頭のイテレータL、中央のイテレータC、末端のイテレータRを定義
+            // ループ内で定義することで、インデックスの変動に応じた値を格納し直してくれる
+            int L = 0;
+            ll C = str_cnt[level] - str_cnt[level] / 2;
+            ll R = str_cnt[level];
+
+            // if文内の関数処理は、左から順に行われる
+            // ||演算子でつないでいることから、途中でtrueを認識したら、そこから右の関数処理は行われない
+            if(resolve_L(level_pos, L) || resolve_C(level_pos, C) || resolve_R(level_pos, R)){
+                cur++;
+                break;
+
+            }else{
+                if(C < level_pos){
+                    level_pos -= str_cnt[level - 1];
+                    level_pos -= 1;
+                }
+                
+                level_pos -= 1;
+                level -= 1;
+            }
+        }
+    }
+
+    // cout << str_cnt[k] << endl;
+
+    cout << ans << endl;
+
+}
+
+
+/* 参考回答
+
+// 左側、先頭のイテレータは0
+ll Lpos = 0;
+
+// そのlevelの中央のイテレータを出力
+ll Cpos(ll level){
+    return str_cnt[level] - str_cnt[level] / 2;
+}
+
+// そのlevelの右、末端のイテレータを出力
+ll Rpos(ll level){
+    return str_cnt[level];
+}
+
+
+            resolve_L(level_pos, level);
+            resolve_C(level_pos, level);
+            resolve_R(level_pos, level);
 
 #include <bits/stdc++.h> 
 using namespace std;
@@ -28,75 +138,184 @@ using ll = long long;
 string ans = "";
 ll L, C, R;
 
-bool resolve_L(ll level_pos, ll level){
-    if(level_pos == L) return false;
+void Aplus(){
+    ans += "A";
+}
 
-    ans += 'A';
-    return true;
+void Bplus(){
+    ans += "B";
+}
+
+void Cplus(){
+    ans += "C";
+}
+
+bool resolve_L(ll level_pos, ll level){
+    if(level_pos == L){
+        return false;
+    }else{
+        // ans += "A";
+        Aplus();
+        return true;
+    }
 }
 
 bool resolve_C(ll level_pos, ll level){
-    if(level_pos == C) return false;
-
-    ans += 'B';
-    return true;
+    if(level_pos == C){
+        return false;
+    }else{
+        // ans.push_back('B');
+        // ans += "B";
+        Bplus();
+        return true;
+    }
 }
 
 bool resolve_R(ll level_pos, ll level){
-    if(level_pos == R) return false;
-
-    ans += 'C';
-    return true;
+    if(level_pos == R){
+        return false;
+    }else{
+        // ans.push_back('C');
+        // ans += "C";
+        Cplus();
+        return true;
+    }
 }
-
 
 int main(){
     int k, s, t;
+
     cin >> k >> s >> t;
 
-    ll cur = s, level_pos = s, level = k;
+    ll cur = s;
+    ll level_pos = cur;
 
     vector<int> str_cnt(k);
 
-    str_cnt[0] = 3;
-    for(int i=1; i<k; i++){
-        str_cnt[i] += str_cnt[i-1] * 2 + 3;
-    }
+    str_cnt[0] = 0;
+    str_cnt[1] = 3;
 
-    // cout << str_cnt[k-1] << endl;
+    for(int i=2; i<=k; i++){
+        str_cnt[i] = str_cnt[i-1] * 2 + 3;
+    }
 
     // 左のイテレータ
     L = 0;
 
     // 中央のイテレータ
-    C = str_cnt[k-1] - str_cnt[k-1] / 2;
+    C = str_cnt[k] - str_cnt[k] / 2;
 
     // 右のイテレータ
-    R = str_cnt[k-1];
+    R = str_cnt[k];
 
-    while(s > t){
-        if(resolve_L(level_pos, level) || resolve_C(level_pos, level) || resolve_R(level_pos, level)){
-            cur += 1;
-            break;
+    while(cur <= t){
+        ll level = k, level_pos = cur;
+        while(1){
+            if(resolve_L(level_pos, level) || resolve_C(level_pos, level) || resolve_R(level_pos, level)){
+                cur += 1;
+                break;
 
-        }else{
-            if(C < level_pos){
-                level_pos -= str_cnt[level - 2];
+            }else{
+                if(C < level_pos){
+                    level_pos -= str_cnt[level - 1];
+                    level_pos -= 1;
+                }
+                
                 level_pos -= 1;
+                level -= 1;
             }
-            
-            level_pos -= 1;
-            level -= 1;
         }
     }
 
-}
-
-
-/* 参考回答
-    string ans = answers.substr(s, t);
+    cout << str_cnt[k] << endl;
 
     cout << ans << endl;
+
+}
+
+#include <bits/stdc++.h> 
+using namespace std;
+using ll = long long; 
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+
+string ans = "";
+ll L, C, R;
+
+
+int main(){
+    int k, s, t;
+
+    cin >> k >> s >> t;
+
+    ll cur = s;
+    ll level_pos = cur;
+
+    vector<int> str_cnt(k);
+
+    str_cnt[0] = 0;
+    str_cnt[1] = 3;
+
+    for(int i=2; i<=k; i++){
+        str_cnt[i] = str_cnt[i-1] * 2 + 3;
+    }
+
+    // 左のイテレータ
+    L = 0;
+
+    // 中央のイテレータ
+    C = str_cnt[k] - str_cnt[k] / 2;
+
+    // 右のイテレータ
+    R = str_cnt[k];
+
+    cout << cur << " " << t << endl;
+
+    while(cur <= t){
+        ll level = k, level_pos = cur;
+
+        while(1){
+            if(level_pos != L){
+                ans += "A";
+                cur += 1;
+                break;
+            }
+
+            else if(level_pos != C){
+                // ans.push_back('B');
+                ans += "B";
+                cur += 1;
+                break;
+            }
+
+            else if(level_pos != R){
+                // ans.push_back('C');
+                ans += "C";
+                cur += 1;
+                break;
+            }
+
+            else{
+                if(C < level_pos){
+                    level_pos -= str_cnt[level - 1];
+                    level_pos -= 1;
+                }
+                
+                level_pos -= 1;
+                level -= 1;
+            }
+        }
+    }
+
+    cout << str_cnt[k] << endl;
+
+    // cout << ans.size() << endl;
+
+    //ans += 'A';
+    //ans += 'B';
+
+    cout << ans << endl;
+
+}
 
 
 // 123から139 の 17文字
@@ -141,4 +360,6 @@ int main(){
 
     return 0;
 }
+
+
 */
