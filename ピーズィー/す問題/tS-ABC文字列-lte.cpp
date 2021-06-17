@@ -19,9 +19,6 @@ sからマイナス1して先頭のイテレータ、その後tからsの値を�
 stringの配列から[k-1]した要素の、sからtまでの部分文字列を出力
 
 BAAABCBABCCBAABCB
-AAAAAAAAAAAAAAAAA
-
-BAAABCBABCCBAABCB
 BAAABCBABCCBAABCB
 */
 
@@ -32,7 +29,7 @@ using ll = long long;
 
 string ans = "";
 
-bool resolve_L(int level_pos, int x){
+bool resolve_L(ll level_pos, ll x){
     if(level_pos != x){
         return false;
     }else{
@@ -41,7 +38,7 @@ bool resolve_L(int level_pos, int x){
     }
 }
 
-bool resolve_C(int level_pos, int x){
+bool resolve_C(ll level_pos, ll x){
     if(level_pos != x){
         return false;
     }else{
@@ -50,7 +47,7 @@ bool resolve_C(int level_pos, int x){
     }
 }
 
-bool resolve_R(int level_pos, int x){
+bool resolve_R(ll level_pos, ll x){
     if(level_pos != x){
         return false;
     }else{
@@ -60,13 +57,14 @@ bool resolve_R(int level_pos, int x){
 }
 
 int main(){
-    ll k, s, t;
+    int k;
+    ll s, t;
 
     cin >> k >> s >> t;
 
-    int cur = s;
+    ll cur = s;
 
-    vector<int> str_cnt(k);
+    array<ll, 51> str_cnt;
 
     str_cnt[0] = 0;
     str_cnt[1] = 3;
@@ -76,12 +74,13 @@ int main(){
     }
 
     while(cur <= t){
-        int level = k, level_pos = cur;
+        int level = k;
+        ll level_pos = cur;
 
         while(1){
             // 先頭のイテレータL、中央のイテレータC、末端のイテレータRを定義
             // ループ内で定義することで、インデックスの変動に応じた値を格納し直してくれる
-            int L = 0;
+            ll L = 0;
             ll C = str_cnt[level] - str_cnt[level] / 2;
             ll R = str_cnt[level];
 
@@ -104,9 +103,7 @@ int main(){
     }
 
     // cout << str_cnt[k] << endl;
-
     cout << ans << endl;
-
 }
 
 
