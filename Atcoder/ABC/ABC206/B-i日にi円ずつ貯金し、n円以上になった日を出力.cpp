@@ -1,4 +1,8 @@
 /* sample input
+12
+
+100128
+
 
 */
 
@@ -13,14 +17,20 @@ using ll = long long;
 
 int main(){
     // 初期値
-    int a;
+    ll n, cnt = 0;
 
     // 入力
+    cin >> n;
 
     // 処理
+    for(int i=1; ; i++){
+        cnt += i;
 
-    // 出力
-    cout << a << endl;
+        if(cnt >= n){
+            cout << i << endl;
+            return 0;
+        }
+    }
 }
 
 /* 参考回答

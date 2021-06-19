@@ -1,4 +1,10 @@
 /* sample input
+180
+
+200
+
+191
+
 
 */
 
@@ -13,14 +19,18 @@ using ll = long long;
 
 int main(){
     // 初期値
-    int a;
+    int n;
 
     // 入力
+    cin >> n;
 
     // 処理
+    n = n * 1.08;
 
     // 出力
-    cout << a << endl;
+    if(n < 206) cout << "Yay!" << endl;
+    else if(n == 206) cout << "so-so" << endl;
+    else cout << ":(" << endl;
 }
 
 /* 参考回答
