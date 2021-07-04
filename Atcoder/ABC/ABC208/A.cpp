@@ -1,10 +1,11 @@
 /* sample input
-3 4 5
+2 11
 
-6 6 6
+2 13
 
-99 99 98
+100 600
 
+4 3
 */
 
 /* 実装方針
@@ -18,15 +19,17 @@ using ll = long long;
 
 int main(){
     // 初期値
-    int a, b, c;
+    int a, b;
 
     // 入力
-    cin >> a >> b >> c;
+    cin >> a >> b;
 
     // 処理
-    if(a < b && a < c) cout << b+c << endl;
-    else if(b < a && b < c) cout << a+c << endl;
-    else cout << a+b << endl;
+    int aa = a * 6;
+
+    // 出力
+    if(aa >= b && a <= b) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
 }
 
